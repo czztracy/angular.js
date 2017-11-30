@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app = "webApp">
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("webApp", []).controller("index", function($scope, $sce){
+				$scope.name = "BX",
+				$scope.bool = true,
+				$scope.arr = ["a", "b", "c"],
+				$scope.size = 18
+			})
+		</script>
+		<div ng-controller = "index">
+			<p style="color:red">1.ng-bind</p>
+			<p ng-bind="name"></p>
+			<p ng-bind="arr"></p>
+			<p style="color:red">2.ng-show</p>
+      		<p ng-show="!bool">显示或者隐藏</p>
+      		<p ng-show="bool">显示或者隐藏</p>
+      		<p style="color:red">ng-hide</p>
+     		<p ng-hide="!bool">123</p>
+     		<p ng-hide="bool">123</p>
+     		<p style="color:red">3.ng-if</p>
+      		<p ng-if="!bool">删除或者增加节点</p>
+      		<p style="color:red">4.ng-include</p>
+      		<!--引入外部的html-->
+      		<p ng-include="'html/template.html'"></p>
+      		<p style="color:red">5.ng-init</p>
+      		<!--初始值-->
+      		<p ng-init="skill='NBA'">{{skill}}</p>
+      		<h1 ng-style="{color: 'blue', fontSize: size + 'px'}">element</h1>
+      		<p style="color:red">6.ng-model</p>
+      		<!--双向数据绑定-->
+      		<input ng-model="name" />
+      		<p>{{name}}</p>
+      		<select ng-model = "name">
+      			<option value="a">1</option>
+		        <option value="b">2</option>
+		        <option value="c">3</option>
+      		</select>
+      		<textarea ng-model="name"></textarea>
+      		<p style="color:red">7.ng-option</p>
+      		<select ng-model = "name" ng-options="item for item in arr "></select>
+      		<p style="color:red">8.ng-repeat</p>
+      		<!--v-for-->
+      		<ul>
+      			<li ng-repeat="n in arr">{{n}}</li>
+      		</ul>
+      		<p style="color:red">9.ng-style</p>
+      		<input type="range" ng-model = "size" />
+      		<p ng-style="{fontSize: size + 'px', color:'blue'}">{{name}}</p>
+      		<p style="color:red">10.ng-class</p>
+      		<p ng-class= "{'red':bool, 'focus':bool}">{{arr[0]}}</p>
+		</div>
+	</body>
+</html>

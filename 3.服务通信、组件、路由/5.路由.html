@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="webApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="../js/angular.js"></script>
+		<script src="../js/angular-ui-router.js"></script>
+		<script>
+			var app = angular.module("webApp", ["ui.router"]);
+			app.config(function($stateProvider, $urlRouterProvider){
+				$stateProvider.state("index", {
+					url: "/index",
+					templateUrl: "./templates/index.html",
+					controller: "indexCtrl"
+				}).state("home", {
+					url: "/home",
+					template: `
+						<div>
+							<p>home</p>
+							<a href="#!/home/a">a</a>
+							<a href="#!/home/b">b</a>
+							<ui-view></ui-view>
+						</div>
+					`
+				}).state("home.a", {
+					url: "/a",
+					template: `<p>NBA</p>`
+				}).state("home.b", {
+					url: "/b",
+					template:`<p>CZZ</p>`
+				})
+				//重定向  当为空时，定向到/index下
+				$urlRouterProvider.when("", "/index")
+			})
+			app.controller("indexCtrl", function($scope){
+				$scope.name = "Bx"
+			})
+		</script>
+		<a href="#!/index">index</a>
+		<a href="#!/home">home</a>
+		<ui-view></ui-view>
+	</body>
+</html>

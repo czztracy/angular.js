@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app = "webApp">
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("webApp", []).service("Cookie", function(){
+				return {
+					setCookie: function(name, value){
+						var days = 10;
+				        var ex = new Date();
+				        ex.setTime(ex.getTime() + days * 24 * 60 * 60 * 1000);
+				        document.cookie = name + "=" + value + ";expires=" + ex;
+					},
+					getCookie: function(name){
+						var a;
+				        var reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
+				        if (a = document.cookie.match(reg)) {
+				        return a[2];
+						}
+					}
+				}
+			}).controller("indexCtrl", function($scope, Cookie){
+				$scope.name = "Czz",
+				Cookie.setCookie("City", "Bx")
+				console.log(Cookie.getCookie("City"))
+			})
+		</script>
+		<div ng-controller = "indexCtrl">
+			<p>{{name}}</p>
+		</div>
+	</body>
+</html>

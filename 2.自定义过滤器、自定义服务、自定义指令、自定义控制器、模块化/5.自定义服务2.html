@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app = "webApp">
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("webApp", [])
+			app.factory("store", function(){
+				return {
+					add: function(a, b){
+						return a+b
+					},
+					name: "Czz"
+				}
+			})
+			app.controller("homeCtrl", function($scope, store){
+				$scope.name = store.name,
+				$scope.Add = store.add,
+				console.log(store)
+			})
+		</script>
+		<div ng-controller = "homeCtrl">
+			<p>{{name}}</p>
+			<p>{{Add(100, 1)}}</p>
+		</div>
+	</body>
+</html>

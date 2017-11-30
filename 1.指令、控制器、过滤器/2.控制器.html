@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app = "webApp">
+		<script src="../js/angular.js"></script>
+		<script>
+			//ng-app一般放在html或者body下
+			var app = angular.module("webApp",[])
+			.controller("header", function($scope){
+				//M
+				$scope.name = "头部"
+			}).controller("connect", function($scope){
+				$scope.name = "主题内容"
+			}).controller("footer", function($scope){
+				$scope.name = "底部"
+			})
+		</script>
+		<div ng-controller = "header" style="border: 2px solid dodgerblue">
+			<p>{{name}}</p>
+		</div>
+		<div ng-controller = "connect" style = "border: 2px solid red">
+			<p>{{name}}</p>
+		</div>
+		<div ng-controller = "footer" style="border: 2px solid green">
+			<p>{{name}}</p>
+		</div>
+	</body>
+</html>

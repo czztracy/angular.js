@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="webApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("webApp", []).controller("index", function($scope, $sce){
+				$scope.username = "",
+				$scope.password = "",
+				$scope.login = function(){
+					console.log($scope.username, $scope.password)
+				}
+			})
+			console.log(app)
+		</script>
+		<div ng-controller = "index">
+			<form name="formLogin">
+				<input type="email" ng-model="username" name="username" />
+				<input type="number" ng-model="password" name="password"  />
+				<button ng-click="login()" ng-disabled="!(formLogin.username.$dirty&&formLogin.password.$dirty)">登录</button>
+				<!--formLogin.username.$dirty 显示布尔值  存在内容为true 否则为false-->
+				<p>{{formLogin.username.$dirty}}</p>
+				<p>{{formLogin.password.$dirty}}</p>
+			</form>
+		</div>
+	</body>
+</html>

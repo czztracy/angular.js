@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script src="../js/vue.js"></script>
+		<script>
+			new Vue({
+				el: "#demo",
+				data: {
+					name:"BX",
+					id: 7
+				},
+				template: `
+					<div>
+						<div v-html="render()"></div>
+					</div>
+				`,
+				methods: {
+					render: function(){
+						return `<h${this.id}>${this.name}</h${this.id}>`
+					}
+				},
+				mounted: function(){
+					setInterval(function(){
+						if(this.id <= 1){
+							return;
+						}else{
+							this.id--
+						}
+					}.bind(this), 1000)
+				}
+			})
+		</script>
+	</body>
+</html>

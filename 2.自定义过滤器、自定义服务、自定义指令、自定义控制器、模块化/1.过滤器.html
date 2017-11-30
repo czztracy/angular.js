@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="webApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("webApp", [])
+			app.controller("index", function($scope){
+				$scope.name = "BX",
+				$scope.id = "",
+				$scope.arr = [{
+					id: 1,
+					name: '76人'
+				},{
+					id: 5,
+					name: '凯尔特人'
+				},{
+					id: 3,
+					name: '骑士'
+				},{
+					id: 8,
+					name: '火箭'
+				},{
+					id: 11,
+					name: "BX"
+				}]
+			})
+		</script>
+		<div ng-controller="index">
+			<p style="color: red">1.filter过滤器</p>
+			<input ng-model="id" />
+			<ul>
+				<li ng-repeat="a in arr|filter:id">{{a.id}}:{{a.name}}</li>
+			</ul>
+			<p style="color: red">2.orderBy过滤器</p>
+			<ul>
+				<li ng-repeat="a in arr|orderBy:'id':false">{{a.id}}:{{a.name}}</li>
+			</ul>
+		</div>
+	</body>
+</html>

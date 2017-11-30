@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app = "webApp">
+		<script src="../js/angular.js"></script>
+		<script>
+			//主模块
+			var app = angular.module("webApp", ["directives", "filters", "services", "controllers"])
+			
+			//分模块
+			//自定义指令
+			var directives = angular.module("directives", [])
+			directives.directive("czzColor", function(){
+				return {
+					link: function(scope, ele, attr){
+						ele.css("color", attr.czzColor)
+						console.log(attr.czzColor)
+						console.log(scope.name)//Czz
+						console.log(ele)
+					}
+				}
+			})
+			
+			//分模块
+			//自定义过滤器
+			var filters = angular.module("filters", [])
+			filters.filter("html", function($sce){
+				return function(value){
+					return $sce.trustAsHtml(value) 
+				}
+			})
+			
+			//分模块
+			//服务
+			var services = angular.module("services", [])
+			services.service("store", function(){
+				return {
+					add: function(a, b){
+						return a+b
+					}
+				}
+			})
+			
+			//分模块
+			//控制器
+			var controllers = angular.module("controllers", [])
+			controllers.controller("index", function($scope, store){
+				$scope.name = "Czz",
+				$scope.html = "<div>恩比德<p style='color:red'>欧文</p>勒布朗</div>",
+				$scope.Add = store.add
+			})
+		</script>
+		<div ng-controller="index">
+			<p czz-Color="blue">{{name}}</p>
+			<p ng-bind-html = "html|html"></p>
+			<p>{{Add(100, 1)}}</p>
+		</div>
+	</body>
+</html>

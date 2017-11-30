@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app = "ngApp">
+		//V
+		<div ng-controller = "indexController">
+			<p>{{name}}</p>
+			<p>{{arr[0]}}</p>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script type="text/javascript">
+			//主模块
+			var app = angular.module("ngApp",[]);
+			console.log(app);
+			//C
+			//在主模块下定义第一个控制器，控制器的作用域是$scope
+			//定义控制器为indexController
+			app.controller("indexController", function($scope){
+				//M
+				$scope.name = "BX",
+				$scope.arr = ["恩比德", "欧文", "哈登"]
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app = "ngApp">
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("ngApp",[]).controller("index", function($scope, $sce){
+				$scope.name = "BX",
+				$scope.num = 1,
+				$scope.obj = {
+					name: "Czz",
+					age: "18"
+				},
+				$scope.arr = ["恩比德", "欧文", "诺维斯基"],
+				$scope.bool = true,
+				//如果要在view里渲染html文本，必须配合$sce来处理这个html结构，将它转化为安全字符
+				$scope.html = "<div>欧文<p>恩比德</p>唐斯</div>",
+				$scope.html = $sce.trustAsHtml($scope.html),
+				$scope.color = "blue"
+			})
+		</script>
+		<div ng-controller = "index">
+			<p style="color:red">1.字符串</p>
+			<p>{{name}}</p>
+			<p style="color:red">2.数字</p>
+			<p>{{num*20 + "17"}}</p>
+			<p style="color:red">3.对象</p>
+			<p>{{"name: " + obj.name + " Age: " + obj.age}}</p>
+			<p style="color:red">4.数组</p>
+			<p>{{arr[2]}}</p>
+			<p>{{arr.length}}</p>
+			<p style="color:red">5.布尔值</p>
+			<p>{{!bool? "恩比德": "欧文"}}</p>
+			<p style="color:red">6.HTML</p>
+			<p ng-bind-html = "html"></p>
+			 <p style="color:red">7.渲染属性值</p>
+			 <p id="{{name}}" skill="{{arr[0]}}">1234567</p>
+			 <p style="color:red">8.CSS</p>
+			 <h1>NBA</h1>
+			 <style>h1{color:{{color}}}</style>
+		</div>
+	</body>
+</html>

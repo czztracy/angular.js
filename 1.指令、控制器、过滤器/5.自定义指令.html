@@ -1,0 +1,43 @@
+<!DOCTYPE >
+<html html ng-app="ngApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("ngApp", []).controller("index", function($scope, $sce){
+				$scope.name = "BX",
+				$scope.skill = "PS"
+			}).directive("ngColor", function(){
+				return {
+					link: function(scope, ele, attr){
+						ele.css("color", attr.ngColor)
+						console.log(attr.ngColor)
+						console.log(ele)
+						console.log(scope)
+					}
+				}
+			}).directive("ngShoww", function(){
+				return {
+					link: function(scope, ele, attr){
+						if(attr.ngShoww == "true"){
+							ele.css("display", "block")
+						}else{
+							ele.css("display", "none")
+						}
+						console.log(attr.ngShoww)
+						console.log(scope.name, scope.skill)
+					}
+				}
+			})
+		</script>
+		<div ng-controller="index">
+			<p ng-bind="name"></p>
+			<p ng-color="red">{{name}}</p>
+			<p ng-color="blue">{{name}}</p>
+			<p ng-showw="true">{{skill}}</p>
+		</div>
+	</body>
+</html>

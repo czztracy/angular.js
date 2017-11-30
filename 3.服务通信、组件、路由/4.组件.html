@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app = 'webApp'>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("webApp", [])
+			console.log(app)
+			//组件
+			app.component("xheader", {
+				//C
+				controller: function($scope){
+					//M
+					console.log($scope),
+					$scope.name = "头部组件",
+					$scope.test = function(){
+						$scope.name = "底部组件"
+					}
+				}, 
+				//V
+				template: `
+					<div>
+						<p>{{name}}</p>
+						<button ng-click="test()">点击</button>
+					</div>
+				`
+			})
+			//C
+			app.controller("indexCtrl", function($scope){
+				$scope.name = "Czz"
+			})
+		</script>
+		<div ng-controller = "indexCtrl">
+			<xheader></xheader>
+			<p>{{name}}</p>
+		</div>
+	</body>
+</html>

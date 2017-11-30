@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app = "webApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("webApp", [])
+			//自定义服务
+			app.service("tool", function(){
+				return {
+					add:function(a, b){
+						return a+b
+					},
+					//vuex redux
+					num:  2
+				}
+			})
+			app.service("store", function(){
+				return {
+					name: "今日头条",
+					num: 2
+				}
+			})
+			app.controller("indexCtrl", function($scope, tool, $interval){
+				$scope.name = "Bx",
+				$interval(function(){
+					if(tool.num >=6){
+						return $scope.num = tool.num
+					}else{
+						tool.num++
+						$scope.num = tool.num
+						console.log(tool)
+					}
+				}, 1000)
+			})
+			app.controller("homeCtrl", function($scope, store, tool){
+				$scope.name = "Czz",
+				console.log(store),
+				store.num = 666,
+				console.log(store),
+				$scope.Add = tool.add
+			})
+		</script>
+		<div ng-controller = "indexCtrl">
+			<p>{{name}}</p>
+			<p>{{num}}</p>
+		</div>
+		<div ng-controller = "homeCtrl">
+			<p>{{name}}</p>
+			<p>{{Add(3, 1)}}</p>
+		</div>
+	</body>
+</html>

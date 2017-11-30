@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/ionic.css" />
+	</head>
+	<body ng-app = "webApp">
+		<script src="../js/ionic.bundle.js"></script>
+		<script>
+			var app = angular.module("webApp", ["ionic"]);
+			app.controller("indexCtrl", function($scope){
+				$scope.name = "Czz"
+			})
+		</script>
+		<div ng-controller = "indexCtrl">
+			<ion-header-bar align-title="center" class="bar-positive">
+				<div class="buttons">
+			        <button class="button" ng-click="doSomething()">左侧按钮</button>
+			    </div>
+			    <h1 class="title">Header!</h1>
+			    <div class="buttons">
+			        <button class="button">右侧按钮</button>
+			    </div>
+			</ion-header-bar>
+			<ion-content>
+				<ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()">
+					
+				</ion-refresher>
+			</ion-content>
+			<ion-footer-bar align-title="center" class="bar-assertive">
+				<div class="buttons">
+			        <button class="button">左侧按钮</button>
+			    </div>
+			    <h1 class="title">Footer!</h1>
+			    <div class="buttons" ng-click="doSomething()">
+			        <button class="button">右侧按钮</button>
+			    </div>
+			</ion-footer-bar>
+		</div>
+	</body>
+</html>

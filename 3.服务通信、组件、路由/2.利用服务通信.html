@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app = "webApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("webApp", [])
+			//相当与redux 和 vuex
+			app.service("store", function(){
+				return {
+					state: {
+						title: "Czz",
+						skill: "WEB",
+						name: "NBA"
+					},
+					getters:{
+						getTitle: function(){
+							return this.state.title
+						},
+						getSkill: function(){
+							return this.state.skill
+						}
+					},
+					action: function(){}
+				}
+			})
+			app.controller("indexCtrl", function($scope, store){
+				$scope.name = "indexCzz",
+				$scope.skill = "123",
+				$scope.$watch("name", function(){
+					store.state.name = $scope.name,
+					store.state.skill = $scope.skill
+				})
+				console.log(store)
+			})
+			app.controller("homeCtrl", function($scope, store){
+				$scope.name = store
+			})
+		</script>
+		<div ng-controller = "indexCtrl" style="border:2px solid blue">
+			<input ng-model='name'  />
+			<p>{{name}}</p>
+			<p>{{skill}}</p>
+		</div>
+		<div ng-controller = "homeCtrl" style="border:2px solid black">
+			<p>{{name.state.name}}</p>
+		</div>
+	</body>
+</html>

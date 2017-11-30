@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app = "webApp">
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("webApp", [])
+			console.log(app)
+			app.value("appVersion", 3.0)//3
+			app.constant("pi", Math.PI)//π 3.1415926...
+			app.controller("index", function($scope, appVersion, pi){
+				$scope.name = "BX"
+				console.log(appVersion);
+				console.log(pi);
+			})
+		</script>
+		<div ng-controller = "index">
+			<p>{{name}}</p>
+		</div>
+	</body>
+</html>

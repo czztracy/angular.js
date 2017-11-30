@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/ionic.css" />
+	</head>
+	<body ng-app = "webApp">
+		<script src="../js/ionic.bundle.js"></script>
+		<script>
+			var app = angular.module("webApp", ["ionic"]);
+			app.controller("indexCtrl", function($scope){
+				$scope.name = "Czz"
+			})
+		</script>
+		<div ng-controller="indexCtrl">
+			<p>{{name}}</p>
+		</div>
+	</body>
+</html>

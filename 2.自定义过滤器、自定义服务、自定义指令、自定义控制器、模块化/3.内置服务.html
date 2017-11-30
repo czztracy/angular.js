@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app = "webApp">
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("webApp", []).controller("index", function($scope, $http, $timeout, $location, $interval, $document){
+				$scope.name = "BX",
+				$scope.num = 1,
+				console.log($http),
+				console.log($location),
+				console.log($location.$$host),
+				console.log($interval),
+				$http.get('json.json').then(function(data){
+					console.log(data);
+					$scope.text = data.data.name;
+				}),
+				$timeout(function(){
+					$scope.name = "BJ"
+				} ,1000),
+				console.log($document),
+				$document[0].getElementById("demo").innerHTML = "Czz",
+				$interval(function(){
+					$scope.num++
+				}, 1000)
+			})
+		</script>
+		<div ng-controller="index">
+			<h3 style="color:red">1.$timeout</h3>
+			<p>{{name}}</p>
+			<h3 style="color:red">2.$http</h3>
+			<p>{{text}}</p>		
+			<h3 style="color:red">3.$document</h3>
+			<p id="demo"></p>
+			<h3 style="color:red">4.$interval</h3>
+			<p>{{num}}</p>
+		</div>
+	</body>
+</html>

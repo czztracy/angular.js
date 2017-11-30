@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app = "webApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("webApp", []).controller("index", function($scope, $sce){
+				$scope.name = "Czz",
+				$scope.skill = "WEB",
+				$scope.bool = true,
+				$scope.ed = function(str){
+					return str + "ed";
+				},
+				$scope.isShow = function(){
+					if($scope.bool){
+						return 'display: block'
+					}else{
+						return 'display: none'
+					}
+				}
+			})
+		</script>
+		<div ng-controller="index">
+			<p>{{ed(name)}}</p>
+			<p ng-show="bool">显示或者隐藏</p>
+			<p ng-style="{display: bool? 'block':'none'}">显示或者隐藏</p>
+			<p style="{{isShow()}}">显示或者隐藏</p>
+			<button ng-click="bool=!bool">点击</button>
+		</div>
+	</body>
+</html>

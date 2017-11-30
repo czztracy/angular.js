@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="webApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("webApp", []).controller("index", function($scope, $sce){
+				$scope.name = "Bx",
+				$scope.skill = "WEB",
+				$scope.test = function(){
+					console.log("test");
+				}
+			})
+			console.log(app)
+		</script>
+		<div ng-controller="index">
+			<p ng-bind="skill"></p>
+			<button ng-click="test()">点击</button>
+			<input ng-change="test()" ng-model="name"  />
+		</div>
+	</body>
+</html>

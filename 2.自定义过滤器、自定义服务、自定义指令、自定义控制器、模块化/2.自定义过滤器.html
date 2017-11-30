@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app = "webApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("webApp", []).controller("index", function($scope){
+				$scope.name = "BX"
+				//自定义指令
+			}).directive("ngColor", function(){
+				return {
+					link: function(scope, ele, attr){
+						console.log(scope)
+						console.log(ele)
+						console.log(attr)
+						ele.css("color", attr.ngColor);
+					}
+				}
+				//自定义过滤器
+			}).filter("ed", function(){
+				return function(value){
+					return value + "ing"
+				}
+			})
+		</script>
+		<div ng-controller="index">
+			<p ng-color="green">{{name}}</p>
+			<p>{{name|ed}}</p>
+		</div>
+	</body>
+</html>
